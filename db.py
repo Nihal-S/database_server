@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/api/v1/read',methods=['GET'])
 def read():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('parking.db')
     c = conn.cursor()
     table = request.json['table']
     columns = request.json['columns']
@@ -22,7 +22,7 @@ def read():
 
 @app.route('/api/v1/write', methods=['POST'])
 def write_db():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('parking.db')
     c = conn.cursor()
     data = request.json['insert']
     column = request.json['column']
